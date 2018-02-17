@@ -1,12 +1,10 @@
 package com.saligh.friends.api;
 
 import com.saligh.friends.bo.AddFriend;
+import com.saligh.friends.utils.AppUtils;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +16,17 @@ import java.util.List;
 @Path("/friends")
 public class FriendsService {
 
-    @GET
+    @PUT
     @Path("/test/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public AddFriend testService(@PathParam("name") String name) {
-        log.info("Test Service: " + name);
+    public AddFriend testService(AddFriend friend) {
+        log.info("Test Service: " + AppUtils.convertasJson(friend));
 
         AddFriend friends = new AddFriend();
         List<String> list = new ArrayList<String>();
         list.add("Mohamed");
-        list.add(name);
+        list.add(friend.getFriends().get(1));
         friends.setFriends(list);
 
         return friends;
