@@ -1,6 +1,7 @@
 package com.saligh.friends.init;
 
 import com.saligh.friends.db.Connection;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -12,6 +13,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 /**
  * Created by saligh on 17/2/18.
  */
+@Slf4j
 public class Application {
 
     public static void main(String[] args) throws Exception {
@@ -23,7 +25,7 @@ public class Application {
         final Server server = new Server(Integer.valueOf(webPort));
 
         ResourceConfig config = new ResourceConfig();
-        config.packages("com.scb.cic");
+        config.packages("com.saligh.friends");
         ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
         ServletContextHandler context = new ServletContextHandler(server, "/api/*");
@@ -45,9 +47,9 @@ public class Application {
         // DBConnection
         java.sql.Connection dbConn = null;
         try {
-            System.out.println("Going to get DB Connection...");
+            log.info("Going to get DB Connection...");
             dbConn = Connection.getConnection();
-            System.out.println("Get connection successful!");
+            log.info("Get connection successful!");
         } finally {
             Connection.closeResources(null, null, dbConn);
         }
