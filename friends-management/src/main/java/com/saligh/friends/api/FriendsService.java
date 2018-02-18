@@ -2,6 +2,9 @@ package com.saligh.friends.api;
 
 import com.saligh.friends.bo.AddFriend;
 import com.saligh.friends.utils.AppUtils;
+import com.saligh.friends.utils.TestBean;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.ws.rs.*;
@@ -13,8 +16,12 @@ import java.util.List;
  * Created by saligh on 17/2/18.
  */
 @Slf4j
+@Getter
+@Setter
 @Path("/friends")
 public class FriendsService {
+
+    private TestBean testBean;
 
     @PUT
     @Path("/test/{name}")
@@ -28,6 +35,8 @@ public class FriendsService {
         list.add("Mohamed");
         list.add(friend.getFriends().get(1));
         friends.setFriends(list);
+
+        log.info("Auto Injection Test: " + testBean.getName());
 
         return friends;
     }

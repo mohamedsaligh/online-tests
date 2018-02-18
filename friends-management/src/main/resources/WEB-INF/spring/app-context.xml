@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.saligh.friends" />
+
+    <bean id="friendsService" class="com.saligh.friends.api.FriendsService">
+        <property name="testBean" ref="testBean" />
+    </bean>
+
+    <bean id="testBean" class="com.saligh.friends.utils.TestBean">
+        <property name="name" value="Spring Style" />
+    </bean>
+
+</beans>

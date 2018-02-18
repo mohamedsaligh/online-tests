@@ -1,20 +1,24 @@
 package com.saligh.friends.init;
 
+import com.saligh.friends.api.FriendsService;
 import com.saligh.friends.db.Connection;
+import com.saligh.friends.utils.TestBean;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.webapp.WebAppContext;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.servlet.ServletContainer;
-
 /**
  * Created by saligh on 17/2/18.
  */
 @Slf4j
-public class Application {
+public class Application extends ResourceConfig {
+
+    public Application() {
+        register(FriendsService.class);
+        register(TestBean.class);
+    }
 
     public static void main(String[] args) throws Exception {
         String webPort = System.getenv("PORT");
@@ -24,22 +28,21 @@ public class Application {
 
         final Server server = new Server(Integer.valueOf(webPort));
 
-        ResourceConfig config = new ResourceConfig();
-        config.packages("com.saligh.friends");
-        ServletHolder servlet = new ServletHolder(new ServletContainer(config));
+        // services
+        WebAppContext webcontext = new WebAppContext();
+        webcontext.setResourceBase("./friends-management/target/classes/");
+        webcontext.setContextPath("/api/*");
+        webcontext.setParentLoaderPriority(true);
+        server.setHandler(webcontext);
 
-        ServletContextHandler context = new ServletContextHandler(server, "/api/*");
-        context.addServlet(servlet, "/*");
-        server.setHandler(context);
-
-        // Web
+        // front-end
         ResourceHandler webHandler = new ResourceHandler();
-        webHandler.setResourceBase("./target/classes/");
+        webHandler.setResourceBase("./friends-management/target/classes/");
         webHandler.setWelcomeFiles(new String[]{"index.html"});
 
-        // Server
+        // adding handlers
         HandlerCollection handlers = new HandlerCollection();
-        handlers.addHandler(context);
+        handlers.addHandler(webcontext);
         handlers.addHandler(webHandler);
         server.setHandler(handlers);
         server.start();
@@ -53,9 +56,6 @@ public class Application {
         } finally {
             Connection.closeResources(null, null, dbConn);
         }
-        //PlayerDAO playerDAO = new PlayerDAO();
-        //playerDAO.checkAllTables(null);
-        //playerDAO.createPlayerTable();
 
         try {
             server.start();
