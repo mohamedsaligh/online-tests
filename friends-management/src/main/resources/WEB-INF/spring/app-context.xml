@@ -1,18 +1,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
     <context:annotation-config />
     <context:component-scan base-package="com.saligh.friends" />
 
-    <bean id="friendsService" class="com.saligh.friends.api.FriendsService">
-        <property name="testBean" ref="testBean" />
+    <bean id="friendService" class="com.saligh.friends.service.FriendService">
+        <property name="friendDAO" ref="friendDAO" />
     </bean>
 
-    <bean id="testBean" class="com.saligh.friends.utils.TestBean">
-        <property name="name" value="Spring Style" />
+    <bean id="friendDAO" class="com.saligh.friends.dao.FriendDAO" />
+
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="friendsem" />
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="friendsEntityProvider" class="com.saligh.friends.db.FriendsEntityProvider">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- the transactional advice  -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--<tx:method name="*Service" read-only="true" />-->
+            <tx:method name="*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="allMethods" expression="execution(* com.saligh.friends.**.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
+    </aop:config>
 
 </beans>

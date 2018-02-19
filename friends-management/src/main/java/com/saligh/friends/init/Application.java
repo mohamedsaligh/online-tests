@@ -1,7 +1,7 @@
 package com.saligh.friends.init;
 
-import com.saligh.friends.api.FriendsService;
-import com.saligh.friends.db.Connection;
+
+import com.saligh.friends.service.FriendService;
 import com.saligh.friends.utils.TestBean;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
@@ -16,8 +16,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class Application extends ResourceConfig {
 
     public Application() {
-        register(FriendsService.class);
-        register(TestBean.class);
+        register(FriendService.class);
     }
 
     public static void main(String[] args) throws Exception {
@@ -46,16 +45,6 @@ public class Application extends ResourceConfig {
         handlers.addHandler(webHandler);
         server.setHandler(handlers);
         server.start();
-
-        // DBConnection
-        java.sql.Connection dbConn = null;
-        try {
-            log.info("Going to get DB Connection...");
-            dbConn = Connection.getConnection();
-            log.info("Get connection successful!");
-        } finally {
-            Connection.closeResources(null, null, dbConn);
-        }
 
         try {
             server.start();
