@@ -10,3 +10,4 @@
  1. Add services (including validations)
  2. Database table creations (in memory db optional)
  3. Migrate to Heroku
+ 4. Unit Testing and Documentation
