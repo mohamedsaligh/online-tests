@@ -2,7 +2,7 @@ package com.saligh.friends.init;
 
 
 import com.saligh.friends.service.FriendService;
-import com.saligh.friends.utils.TestBean;
+
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
