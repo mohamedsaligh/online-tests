@@ -122,7 +122,6 @@
             <version>${hibernate.jpa.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.transaction/javax.transaction-api -->
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
