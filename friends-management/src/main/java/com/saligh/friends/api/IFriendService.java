@@ -1,5 +1,6 @@
 package com.saligh.friends.api;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.saligh.friends.bo.CreateRequest;
 import com.saligh.friends.bo.Response;
 

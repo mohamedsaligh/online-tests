@@ -5,6 +5,7 @@ import com.saligh.friends.bo.CreateRequest;
 import com.saligh.friends.bo.Response;
 import com.saligh.friends.dao.FriendDAO;
 import com.saligh.friends.utils.AppUtils;
+import com.saligh.friends.validation.FriendsValidator;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +27,10 @@ public class FriendService implements IFriendService {
 
     @Override
     public Response createFriend(CreateRequest createRequest) {
+        //Response object initialization...
+        Response response = new Response();
 
-        if (!AppUtils.validateCreateFriends(createRequest)) {
+        if (!FriendsValidator.validateCreateRequest(createRequest)) {
             //Invalid request
             log.error(">> Invalid request");
         } else if (!validateEmails(createRequest.getFriends())) {

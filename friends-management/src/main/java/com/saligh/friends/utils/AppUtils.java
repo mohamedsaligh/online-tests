@@ -15,16 +15,6 @@ public class AppUtils {
         return (obj == null) ? null : new GsonBuilder().create().toJson(obj);
     }
 
-    public static boolean validateCreateFriends(CreateRequest request) {
-        if (request != null && request.getFriends() != null) {
-            if (!request.getFriends().isEmpty() && request.getFriends().size() == 2) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public static boolean isValidEmailAddress(String email) {
         try {
             new InternetAddress(email).validate();
