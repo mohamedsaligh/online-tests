@@ -9,10 +9,15 @@
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
     <context:annotation-config />
+
     <context:component-scan base-package="com.saligh.friends" />
 
+    <bean id="friendGateway" class="com.saligh.friends.api.FriendGateway">
+        <property name="friendService" ref="friendService" />
+    </bean>
+
     <bean id="friendService" class="com.saligh.friends.service.FriendService">
-        <property name="friendDAO" ref="friendDAO" />
+        <property name="friendDAO" ref="friendDAO"/>
     </bean>
 
     <bean id="friendDAO" class="com.saligh.friends.dao.FriendDAO" />
@@ -35,9 +40,9 @@
     </bean>
 
     <!-- the transactional advice  -->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <!--<tx:method name="*Service" read-only="true" />-->
+            <tx:method name="**service.*Service" read-only="true" />
             <tx:method name="*" propagation="REQUIRED" />
         </tx:attributes>
     </tx:advice>
@@ -45,6 +50,6 @@
     <aop:config>
         <aop:pointcut id="allMethods" expression="execution(* com.saligh.friends.**.*(..))" />
         <aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
-    </aop:config>
+    </aop:config>-->
 
 </beans>

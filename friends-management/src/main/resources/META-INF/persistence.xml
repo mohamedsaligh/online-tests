@@ -4,16 +4,23 @@
              version="2.0">
     <persistence-unit name="friendsem" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <!--<class>com.saligh.friends.bo.Tmp1</class>-->
+
+        <class>com.saligh.friends.db.Users</class>
+        <class>com.saligh.friends.db.FriendsPK</class>
+        <class>com.saligh.friends.db.Friends</class>
+        <class>com.saligh.friends.db.Updates</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
-            <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/friendmgmt"/>
+            <property name="javax.persistence.jdbc.user" value="saligh"/>
+            <property name="javax.persistence.jdbc.password" value="243505"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!--<property name="hibernate.current_session_context_class" value="org.springframework.orm.hibernate4.SpringSessionContext" />-->
+            <property name="hibernate.jta.allowTransactionAccess" value="true"/>
+            <!--<property name="hibernate.connection.autocommit" value="true" />-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
         </properties>
     </persistence-unit>
 </persistence>
