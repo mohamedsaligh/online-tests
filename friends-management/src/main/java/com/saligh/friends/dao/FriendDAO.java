@@ -27,7 +27,7 @@ import java.util.List;
 public class FriendDAO {
 
     @PersistenceContext(name = "friendsem")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public Users getUsers(String email) {
         QUsers users = QUsers.users;
