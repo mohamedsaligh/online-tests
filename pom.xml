@@ -286,6 +286,12 @@
             <version>1.5.16</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.threeten</groupId>
+            <artifactId>threetenbp</artifactId>
+            <version>0.7.2</version>
+        </dependency>
+
         <!--<dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
