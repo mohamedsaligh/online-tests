@@ -23,11 +23,6 @@ public class FriendGateway {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/create")
-    @ApiOperation(
-            value = "List all people",
-            notes = "List all people using paging",
-            response = CreateResponse.class
-    )
     public CreateResponse createFriend(CreateRequest createRequest) {
         return friendService.createFriend(createRequest);
     }

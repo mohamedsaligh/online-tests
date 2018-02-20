@@ -15,7 +15,6 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@ApiModel( value = "Request", description = "Please provide 2 valid email Ids" )
 public class CreateRequest {
 
     private List<String> friends;
