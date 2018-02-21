@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app>
 <head>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+   <script src="js/angular.min.js"></script>
    <meta charset="utf-8">
    <meta http-equiv="Content-Type" content="text/html">
    <title>Friends Management - Mohamed Saligh</title>
@@ -46,7 +46,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="username1" placeholder="Email ID of Friend1" style="width: 48%;float: left;margin-right: 20px;">
             <input type="text" id="ghusername" ng-model="username2" placeholder="Email ID of Friend2" style="width: 48%;float: left;">
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('create')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('create')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
@@ -68,7 +68,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="username" placeholder="Email ID of Friend1" style="width: 80%;margin-right: 20px;">
             <!-- <input type="text" id="ghusername" ng-model="username2" placeholder="Email ID of Friend2" style="width: 48%;float: left;"> -->
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('friends')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('friends')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
@@ -97,7 +97,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="username3" placeholder="Email ID of Friend1" style="width: 48%;float: left;margin-right: 20px;">
             <input type="text" id="ghusername" ng-model="username4" placeholder="Email ID of Friend2" style="width: 48%;float: left;">
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('mutual')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('mutual')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
@@ -126,7 +126,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="username5" placeholder="Requestor EmaildId" style="width: 48%;float: left;margin-right: 20px;">
             <input type="text" id="ghusername" ng-model="username6" placeholder="Target EmailId" style="width: 48%;float: left;">
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('subscribe')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('subscribe')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
@@ -147,7 +147,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="username7" placeholder="Requestor EmaildId" style="width: 48%;float: left;margin-right: 20px;">
             <input type="text" id="ghusername" ng-model="username8" placeholder="Target EmailId" style="width: 48%;float: left;">
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('block')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('block')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
@@ -169,7 +169,7 @@
             <p>Enter valida 2 email address to be added as friends.</p>
             <input type="text" id="ghusername" ng-model="sender" placeholder="Sender EmailId" style="width: 48%;float: left;margin-right: 20px;">
             <input type="text" id="ghusername" ng-model="text" placeholder="Update Text..." style="width: 48%;float: left;">
-            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('updates')">Create</a>
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('updates')">Process</a>
             <!-- <div id="ghapidata" class="clearfix"></div> -->
             <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
                   <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
