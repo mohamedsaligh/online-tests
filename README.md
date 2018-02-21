@@ -13,6 +13,9 @@
  6. Unit Testing and Documentation
 
 
+## Completed Service is available at: https://online-test-friends.herokuapp.com/
+
+
 ### Due to time constraint
  I could not host the application in cloud.
  1) Create a postgres database 'friendmgmt' in localhost and play the sql file (`database-scripts.sql`) in it.
