@@ -3,8 +3,6 @@ package com.saligh.friends.dao;
 import com.mysema.query.hql.HQLQuery;
 import com.mysema.query.hql.HQLSubQuery;
 import com.mysema.query.hql.jpa.JPAQuery;
-import com.mysema.query.types.expr.EBoolean;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.saligh.friends.db.Friends;
 import com.saligh.friends.db.QFriends;
 import com.saligh.friends.db.QUsers;
@@ -27,7 +25,7 @@ import java.util.List;
 public class FriendDAO {
 
     @PersistenceContext(name = "friendsem")
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     public Users getUsers(String email) {
         QUsers users = QUsers.users;
