@@ -30,7 +30,7 @@ public class FriendGateway {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/list")
+    @Path("/friends")
     public UserResponse getFriendsList(UserRequest userRequest) {
         return friendService.getFriendsList(userRequest);
     }
@@ -38,7 +38,7 @@ public class FriendGateway {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/common")
+    @Path("/mutual")
     public UserResponse getCommonFriends(CreateRequest createRequest) {
         return friendService.getCommonFriends(createRequest);
     }
@@ -62,7 +62,7 @@ public class FriendGateway {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/updatelist")
+    @Path("/updates")
     public UpdateResponse emailstoGetUpdates(UpdateRequest updateRequest) {
         return friendService.emailstoGetUpdates(updateRequest);
     }

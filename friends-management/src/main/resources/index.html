@@ -1,0 +1,238 @@
+<!doctype html>
+<html ng-app>
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+   <meta charset="utf-8">
+   <meta http-equiv="Content-Type" content="text/html">
+   <title>Friends Management - Mohamed Saligh</title>
+   <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+
+      <script>
+            function openCity(evt, cityName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(cityName).style.display = "block";
+                  evt.currentTarget.className += " active";
+            }
+      </script>
+</head>
+
+<body ng-controller="GitHubCtrl">
+
+<div id="w">
+   <div>
+      <h1>Friends Management</h1><hr/>
+
+      <div class="tab">
+            <button class="tablinks active" onclick="openCity(event, 'Create')">Create</button>
+            <button class="tablinks" onclick="openCity(event, 'Friends')">Friends</button>
+            <button class="tablinks" onclick="openCity(event, 'Mutual')">Mutual</button>
+            <button class="tablinks" onclick="openCity(event, 'Subscribe')">Subscribe</button>
+            <button class="tablinks" onclick="openCity(event, 'Block')">Block</button>
+            <button class="tablinks" onclick="openCity(event, 'Updates')">Updates</button>
+      </div>
+
+      <div id="ghapidata" class="clearfix"></div>
+
+      <div id="Create" class="tabcontent" style="display: block;">
+            <!-- <h2>Create Friends 1</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="username1" placeholder="Email ID of Friend1" style="width: 48%;float: left;margin-right: 20px;">
+            <input type="text" id="ghusername" ng-model="username2" placeholder="Email ID of Friend2" style="width: 48%;float: left;">
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('create')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+
+      <div id="Friends" class="tabcontent" style="display: none;">
+            <!-- <h2>Create Friends 2</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="username" placeholder="Email ID of Friend1" style="width: 80%;margin-right: 20px;">
+            <!-- <input type="text" id="ghusername" ng-model="username2" placeholder="Email ID of Friend2" style="width: 48%;float: left;"> -->
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('friends')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Friends</b></td>
+                              <td>
+                                    <ul ng-repeat="id in user.friends" style="padding: 5px; display: list-item;">
+                                          <li>&diams;  {{id}}</li>
+                                    </ul>
+                              </td></tr>
+                        <tr><td style="width: 30%;"><b>Count</b></td><td>{{user.count}}</td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+
+      <div id="Mutual" class="tabcontent" style="display: none;">
+            <!-- <h2>Create Friends 3</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="username3" placeholder="Email ID of Friend1" style="width: 48%;float: left;margin-right: 20px;">
+            <input type="text" id="ghusername" ng-model="username4" placeholder="Email ID of Friend2" style="width: 48%;float: left;">
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('mutual')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Friends</b></td>
+                              <td>
+                                    <ul ng-repeat="id in user.friends" style="padding: 5px; display: list-item;">
+                                          <li>&diams;  {{id}}</li>
+                                    </ul>
+                              </td></tr>
+                        <tr><td style="width: 30%;"><b>Count</b></td><td>{{user.count}}</td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+
+      <div id="Subscribe" class="tabcontent" style="display: none;">
+            <!-- <h2>Create Friends 3</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="username5" placeholder="Requestor EmaildId" style="width: 48%;float: left;margin-right: 20px;">
+            <input type="text" id="ghusername" ng-model="username6" placeholder="Target EmailId" style="width: 48%;float: left;">
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('subscribe')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+      <div id="Block" class="tabcontent" style="display: none;">
+            <!-- <h2>Create Friends 3</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="username7" placeholder="Requestor EmaildId" style="width: 48%;float: left;margin-right: 20px;">
+            <input type="text" id="ghusername" ng-model="username8" placeholder="Target EmailId" style="width: 48%;float: left;">
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('block')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+
+      <div id="Updates" class="tabcontent" style="display: none;">
+            <!-- <h2>Create Friends 3</h2> -->
+            <p>Enter valida 2 email address to be added as friends.</p>
+            <input type="text" id="ghusername" ng-model="sender" placeholder="Sender EmailId" style="width: 48%;float: left;margin-right: 20px;">
+            <input type="text" id="ghusername" ng-model="text" placeholder="Update Text..." style="width: 48%;float: left;">
+            <a href="#" id="ghsubmitbtn" ng-click="getGitInfo('updates')">Create</a>
+            <!-- <div id="ghapidata" class="clearfix"></div> -->
+            <div ng-show="userNotFound" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;">Something went wrong! Please hang on...</h3>
+            </div>
+            <div ng-show="loaded" style="margin-top: 20px; padding: 5px 10px 5px 10px; border: 1px yellowgreen solid; background-color: wheat;">
+                  <h3 style="font-size: 14px;"> 
+                  <table>
+                        <tr><td style="width: 30%;"><b>Success</b></td><td>{{user.success}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Message</b></td><td>{{user.message}}</td></tr>
+                        <tr><td style="width: 30%;"><b>Friends</b></td>
+                              <td>
+                                    <ul ng-repeat="id in user.recipients" style="padding: 5px; display: list-item;">
+                                          <li>&diams;  {{id}}</li>
+                                    </ul>
+                              </td></tr>
+                  </table>
+            <!-- <span class="smallname">(@<a href="{{user.success}}" target="_blank"> {{user.message}} </a>)</span> -->
+                  </h3>
+            </div>
+      </div>
+
+   <div id="ghapidata" class="clearfix"></div>
+</div>
+
+
+<script>
+      angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
+   
+      function GitHubCtrl($scope, $http, $timeout) {
+            $scope.getGitInfo = function ($action) {
+                  $scope.userNotFound = false;
+                  $scope.loaded = false;
+                  
+                  var data;
+                  if ($action == "create") {
+                        data = {"friends": [ $scope.username1, $scope.username2 ]};
+                  } else if ($action == "friends") {
+                        data = { "email": $scope.username };
+                  } else if ($action == "mutual") {
+                        data = {"friends": [ $scope.username3, $scope.username4 ]};
+                  } else if ($action == "subscribe") {
+                        data = {"requestor": $scope.username5, "target": $scope.username6 };
+                  } else if ($action == "block") {
+                        data = {"requestor": $scope.username7, "target": $scope.username8 };
+                  } else if ($action == "updates") {
+                        data = {"sender": $scope.sender, "text": $scope.text };
+                  }
+
+                  $http.put("http://localhost:8081/api/friend/" + $action, data)
+                        .success(function (data) {
+                              //if (data.name == "") data.name = data.login;
+                              $scope.user = data;
+                              $scope.loaded = true;
+                              $timeout(function() {
+                                    $scope.loaded = false;
+                              }, 8000);
+                        })
+                        .error(function () {
+                              $scope.userNotFound = true;
+                        });
+                  }
+      }
+</script>
+
+</body>
+</html>

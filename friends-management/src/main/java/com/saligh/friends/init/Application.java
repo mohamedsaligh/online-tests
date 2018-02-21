@@ -22,7 +22,7 @@ public class Application extends ResourceConfig {
     public static void main(String[] args) throws Exception {
         String webPort = System.getenv("PORT");
         if (webPort == null || webPort.isEmpty()) {
-            webPort = "8080";
+            webPort = "8081";
         }
 
         final Server server = new Server(Integer.valueOf(webPort));
