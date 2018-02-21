@@ -224,6 +224,8 @@ public class FriendService {
             block.setStatus(Status.BLOCKED.getStatus());
             friendDAO.updateFriends(block);
 
+            updateFriendsCount(requestor, target);
+
             createResponse.setMessage(Messages.blockingUserIsSuccessful);
             return createResponse;
         }
@@ -233,10 +235,23 @@ public class FriendService {
         friendDAO.createFriends(subscribe);
         createResponse.setMessage(Messages.blockingUserIsSuccessful);
 
+        updateFriendsCount(requestor, target);
+
         log.info("blockUsers: requestor successfully blocked the target.");
         return createResponse;
     }
 
+    private void updateFriendsCount(Users requestor, Users target) {
+        if(requestor.getFriendCount() > 0) {
+            requestor.setFriendCount(requestor.getFriendCount() - 1);
+            friendDAO.updateUsers(requestor);
+        }
+
+        if(target.getFriendCount() > 0) {
+            target.setFriendCount(target.getFriendCount() - 1);
+            friendDAO.updateUsers(target);
+        }
+    }
 
     @Transactional
     public UpdateResponse emailstoGetUpdates(UpdateRequest updateRequest) {

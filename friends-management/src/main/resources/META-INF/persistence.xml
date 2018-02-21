@@ -8,19 +8,19 @@
         <class>com.saligh.friends.db.Users</class>
         <class>com.saligh.friends.db.FriendsPK</class>
         <class>com.saligh.friends.db.Friends</class>
-        <class>com.saligh.friends.db.Up</class>
+        <class>com.saligh.friends.db.Updates</class>
 
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/friendmgmt"/>
-            <property name="javax.persistence.jdbc.user" value="saligh"/>
-            <property name="javax.persistence.jdbc.password" value="243505"/>
+        <!--<properties>
+            &lt;!&ndash;<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>&ndash;&gt;
+            &lt;!&ndash;<property name="javax.persistence.jdbc.url" value="${systemEnvironment['DATABASE_URL']}"/>&ndash;&gt;
+            &lt;!&ndash;<property name="javax.persistence.jdbc.user" value="${ @dbUrl.getUserInfo().split(':')[0] }"/>&ndash;&gt;
+            &lt;!&ndash;<property name="javax.persistence.jdbc.password" value="${ @dbUrl.getUserInfo().split(':')[1] }"/>&ndash;&gt;
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
-            <!--<property name="hibernate.current_session_context_class" value="org.springframework.orm.hibernate4.SpringSessionContext" />-->
+            &lt;!&ndash;<property name="hibernate.current_session_context_class" value="org.springframework.orm.hibernate4.SpringSessionContext" />&ndash;&gt;
             <property name="hibernate.jta.allowTransactionAccess" value="true"/>
-            <!--<property name="hibernate.connection.autocommit" value="true" />-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
-        </properties>
+            &lt;!&ndash;<property name="hibernate.connection.autocommit" value="true" />&ndash;&gt;
+            &lt;!&ndash;<property name="hibernate.hbm2ddl.auto" value="update"/>&ndash;&gt;
+        </properties>-->
     </persistence-unit>
 </persistence>
