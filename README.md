@@ -15,7 +15,7 @@
 
 ### Due to time constraint
  I could not host the application in cloud.
- 1) Create a database 'friendmgmt' and play the sql file (`database-scripts.sql`) in it.
+ 1) Create a postgres database 'friendmgmt' in localhost and play the sql file (`database-scripts.sql`) in it.
  2) Start the application using main function 'com.saligh.friends.init.Applicatoin'.
  3) Submit the request to local host using post 8080
  -   Create Friend: http://localhost:8080/api/friend/create
