@@ -18,12 +18,12 @@
  1) Create a database 'friendmgmt' and play the sql file (`database-scripts.sql`) in it.
  2) Start the application using main function 'com.saligh.friends.init.Applicatoin'.
  3) Submit the request to local host using post 8080
- -   a) Create Friend: http://localhost:8080/api/friend/create
- -   b) List of Friends: http://localhost:8080/api/friend/list
- -   c) Common Friends: http://localhost:8080/api/friend/common
- -   d) Subscribe: http://localhost:8080/api/friend/subscribe
- -   d) Block: http://localhost:8080/api/friend/block
- -   e) Get Updates: http://localhost:8080/api/friend/updatelist
+ -   Create Friend: http://localhost:8080/api/friend/create
+ -   List of Friends: http://localhost:8080/api/friend/list
+ -   Common Friends: http://localhost:8080/api/friend/common
+ -   Subscribe: http://localhost:8080/api/friend/subscribe
+ -   Block: http://localhost:8080/api/friend/block
+ -   Get Updates: http://localhost:8080/api/friend/updatelist
  4) Use any Postman or SoapUI to test the services for now. This will be enhanced further.
 
 
