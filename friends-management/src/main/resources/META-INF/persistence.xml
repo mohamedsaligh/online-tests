@@ -12,9 +12,9 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="${JDBC_DATABASE_URL}"/>
-            <property name="javax.persistence.jdbc.user" value="${JDBC_DATABASE_USERNAME}"/>
-            <property name="javax.persistence.jdbc.password" value="${JDBC_DATABASE_PASSWORD}"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/friendmgmt"/>
+            <property name="javax.persistence.jdbc.user" value="saligh"/>
+            <property name="javax.persistence.jdbc.password" value="243505"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
             <!--<property name="hibernate.current_session_context_class" value="org.springframework.orm.hibernate4.SpringSessionContext" />-->
