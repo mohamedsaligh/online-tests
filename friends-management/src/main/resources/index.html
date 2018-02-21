@@ -218,7 +218,7 @@
                         data = {"sender": $scope.sender, "text": $scope.text };
                   }
 
-                  $http.put("http://localhost:8081/api/friend/" + $action, data)
+                  $http.put("https://online-test-friends.herokuapp.com/api/friend/" + $action, data)
                         .success(function (data) {
                               //if (data.name == "") data.name = data.login;
                               $scope.user = data;
